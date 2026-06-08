@@ -40,6 +40,12 @@ function renderTasks() {
                 </button>
 
                 <button
+                    class="edit-btn"
+                    onclick="editTask(${index})">
+                    Edit
+                </button>
+
+                <button
                     class="delete-btn"
                     onclick="deleteTask(${index})">
                     Delete
@@ -72,6 +78,22 @@ function addTask() {
     taskInput.value = "";
 
     renderTasks();
+}
+
+function editTask(index) {
+
+    const updatedTask = prompt(
+        "Edit your task:",
+        tasks[index].text
+    );
+
+    if (
+        updatedTask !== null &&
+        updatedTask.trim() !== ""
+    ) {
+        tasks[index].text = updatedTask.trim();
+        renderTasks();
+    }
 }
 
 function deleteTask(index) {
