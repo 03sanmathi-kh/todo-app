@@ -1,0 +1,154 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    background:#f0f4ff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:600px;
+}
+
+.todo-card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(79,110,247,0.15);
+    border:1px solid rgba(79,110,247,0.15);
+}
+
+.todo-card h1{
+    text-align:center;
+    color:#1a3ab8;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#6b9bfa;
+    margin-bottom:25px;
+    font-size:0.95rem;
+}
+
+.input-section{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.input-section input{
+    flex:1;
+    padding:12px 15px;
+    border:2px solid #dbe6ff;
+    border-radius:12px;
+    outline:none;
+    font-size:1rem;
+    font-family:'Outfit',sans-serif;
+}
+
+.input-section input:focus{
+    border-color:#4f6ef7;
+}
+
+.input-section button{
+    background:linear-gradient(135deg,#4f6ef7,#6b9bfa);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.input-section button:hover{
+    transform:translateY(-2px);
+}
+
+.stats{
+    text-align:center;
+    color:#1a3ab8;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+#taskList{
+    list-style:none;
+}
+
+.task-item{
+    background:#f8faff;
+    border:1px solid #e6eeff;
+    border-radius:12px;
+    padding:12px 15px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.task-text{
+    color:#333;
+    flex:1;
+}
+
+.completed{
+    text-decoration:line-through;
+    color:#999;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+.complete-btn,
+.delete-btn{
+    border:none;
+    padding:7px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:0.85rem;
+    font-family:'Outfit',sans-serif;
+}
+
+.complete-btn{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.delete-btn{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.empty{
+    text-align:center;
+    color:#888;
+    padding:15px;
+}
+
+@media(max-width:600px){
+
+    .todo-card{
+        padding:20px;
+    }
+
+    .input-section{
+        flex-direction:column;
+    }
+
+    .input-section button{
+        width:100%;
+    }
+}
