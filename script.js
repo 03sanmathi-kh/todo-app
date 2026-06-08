@@ -1,6 +1,7 @@
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 const taskCount = document.getElementById("taskCount");
+const completedCount = document.getElementById("completedCount");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -8,8 +9,11 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function updateCount() {
+function updateStats() {
     taskCount.textContent = tasks.length;
+
+    const completed = tasks.filter(task => task.completed).length;
+    completedCount.textContent = completed;
 }
 
 function renderTasks() {
@@ -27,7 +31,7 @@ function renderTasks() {
         li.className = "task-item";
 
         li.innerHTML = `
-            <span class="task-text ${task.completed ? 'completed' : ''}">
+            <span class="task-text ${task.completed ? "completed" : ""}">
                 ${task.text}
             </span>
 
@@ -57,7 +61,7 @@ function renderTasks() {
         taskList.appendChild(li);
     });
 
-    updateCount();
+    updateStats();
     saveTasks();
 }
 
@@ -83,7 +87,7 @@ function addTask() {
 function editTask(index) {
 
     const updatedTask = prompt(
-        "Edit your task:",
+        "Edit Task",
         tasks[index].text
     );
 
@@ -98,16 +102,28 @@ function editTask(index) {
 
 function deleteTask(index) {
 
-    tasks.splice(index, 1);
-
-    renderTasks();
+    if (confirm("Delete this task?")) {
+        tasks.splice(index, 1);
+        renderTasks();
+    }
 }
 
 function toggleTask(index) {
 
-    tasks[index].completed = !tasks[index].completed;
+    tasks[index].completed =
+        !tasks[index].completed;
 
     renderTasks();
+}
+
+function clearAllTasks() {
+
+    if (tasks.length === 0) return;
+
+    if (confirm("Delete all tasks?")) {
+        tasks = [];
+        renderTasks();
+    }
 }
 
 taskInput.addEventListener("keypress", function(event) {
