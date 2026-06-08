@@ -24,12 +24,25 @@
                     id="taskInput"
                     placeholder="Enter a new task..."
                 >
-                <button onclick="addTask()">Add</button>
+                <button onclick="addTask()">Add Task</button>
             </div>
 
-            <div class="stats">
-                Total Tasks:
-                <span id="taskCount">0</span>
+            <div class="stats-container">
+                <div class="stat-box">
+                    <h3 id="taskCount">0</h3>
+                    <p>Total Tasks</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3 id="completedCount">0</h3>
+                    <p>Completed</p>
+                </div>
+            </div>
+
+            <div class="actions-top">
+                <button class="clear-btn" onclick="clearAllTasks()">
+                    Clear All
+                </button>
             </div>
 
             <ul id="taskList"></ul>
